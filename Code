@@ -1,0 +1,43 @@
+"""
+Project 3 - Random Password Generator
+DecodeLabs Industrial Training Kit | Batch 2026
+
+Generates a random password containing letters and numbers.
+"""
+
+import random
+import string
+
+
+def generate_password(length):
+    """Generate a random password of the requested length."""
+    characters = string.ascii_letters + string.digits
+    return "".join(random.choice(characters) for _ in range(length))
+
+
+def main():
+    print("=" * 45)
+    print("       RANDOM PASSWORD GENERATOR")
+    print("=" * 45)
+
+    while True:
+        try:
+            length = int(input("Enter password length (minimum 4): "))
+
+            if length < 4:
+                print("Please enter a length of at least 4.")
+                continue
+
+            password = generate_password(length)
+
+            print("\nGenerated Password:")
+            print(password)
+            print(f"Password length: {len(password)} characters")
+            break
+
+        except ValueError:
+            print("Invalid input. Please enter a whole number.")
+
+
+if __name__ == "__main__":
+    main()
